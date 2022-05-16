@@ -1,0 +1,42 @@
+﻿@model WebMarathon.Models.ViewModels.LoginViewModel
+
+<h2>Авторизація</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form id="account" method="post" asp-action="Login" asp-controller="Account">
+                <h4></h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group row">
+                    <label class="col-md-3" asp-for="PhoneNumber"></label>
+                    <div class=" col-md-7">
+                        <input asp-for="PhoneNumber" class="form-control"  placeholder="+380 (XX) XXX XXXX" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3" asp-for="Password"></label>
+                    <div class=" col-md-7">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10 offset-md-2">
+                        <input type="submit" value="Авторизуватися" class="btn btn-success" />
+                    </div>
+                </div>
+                <p class="col-md-10 offset-md-2">
+                    <a asp-action="Register">Реєстрація</a>
+                </p>
+
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

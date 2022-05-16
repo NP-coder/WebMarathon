@@ -1,0 +1,56 @@
+﻿@model WebMarathon.Models.ViewModels.RegisterViewModel
+
+<h2>Створити новий обліковий запис</h2>
+<form method="post" asp-action="Register" asp-controller="Account">
+    <h4></h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <label class="col-md-2" asp-for="Name"></label>
+        <div class="col-md-7">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2" asp-for="PhoneNumber"></label>
+        <div class="col-md-7">
+            <input asp-for="PhoneNumber" class="form-control"  placeholder="+380 (XX) XXX XXXX" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2" asp-for="Password"></label>
+        <div class="col-md-7">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2" asp-for="RoleName"></label>
+        <div class=" col-md-7">
+            <select asp-for="RoleName"
+                    asp-items="@WebMarathon.Utility.Helper.GetRolesForDropDown(User.IsInRole(WebMarathon.Utility.Helper.Admin))"
+                    class="form-control">
+            </select>
+        </div>
+        @*<div class=" col-md-7">
+            <select asp-for="RoleName"
+                    asp-items="@WebMarathon.Utility.Helper.GetRolesForDropDown(true)"
+                    class="form-control">
+            </select>
+        </div>*@
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 offset-md-2">
+            <input type="submit" value="Зареєструватися" class="btn btn-success" />
+        </div>
+    </div>
+    <p class="col-md-10 offset-md-2">
+        <a asp-action="Login">Авторизація</a>
+    </p>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
